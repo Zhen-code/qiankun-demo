@@ -2,13 +2,19 @@ import './public-path';
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+import { useGlobalStore } from './stores/globalStore';
+import { createPinia } from 'pinia'
 // createApp(App).use(router).mount('#app')
+const pinia = createPinia()
 let instance = null;
 function render(props = {}) {
   const { container } = props;
   instance = createApp(App)
   instance.use(router)
+  instance.use(ElementPlus)
+  instance.use(pinia)
   instance.mount(container ? container.querySelector('#app') : '#app');
 }
 
@@ -21,8 +27,15 @@ export async function bootstrap() {
   console.log('[vue] vue app bootstraped');
 }
 export async function mount(props) {
-  console.log('[vue] props from main framework', props);
+  console.log('[vue] props from main framework', props.state);
   render(props);
+
+props.onGlobalStateChange((state, prev) => {
+    // state: 变更后的状态; prev 变更前的状态
+    console.log(state, prev,'state change');
+    const store = useGlobalStore();
+    store.updateGlobalState(state);
+  });
 }
 export async function unmount() {
 //   instance.$destroy();

@@ -34,6 +34,13 @@ export async function bootstrap() {
 export async function mount(props) {
   console.log('[react16] props from main framework', props);
   render(props);
+  props.onGlobalStateChange((state, prev) => {
+    // state: 变更后的状态; prev 变更前的状态
+    console.log(state, prev,'state change');
+  
+  });
+
+
 }
 
 export async function unmount(props) {
