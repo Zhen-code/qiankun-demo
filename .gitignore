@@ -9,33 +9,36 @@ dist/
 # .env.local
 # .env.*.local
 
-# # Editor directories and files
-# .vscode/
-# .idea/
-# *.suo
-# *.ntvs*
-# *.njsproj
-# *.sln
-# *.sw?
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-# # OS generated files
-# .DS_Store
-# .DS_Store?
-# ._*
-# .Spotlight-V100
-# .Trashes
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
 
-# # Logs
-# logs/
-# *.log
-# npm-debug.log*
-# yarn-debug.log*
-# yarn-error.log*
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# # Debug files
-# *.pid
-# *.seed
+# Debug files
+*.pid
+*.seed
 
-# # Misc
-# *.bak
-# *.tmp
+# Misc
+*.bak
+*.tmp
+
+Snipaste_2025-08-17_19-27-09.png
+main-app/build/

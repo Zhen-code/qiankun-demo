@@ -18,7 +18,7 @@ export default {
 
 <style>
 .home {
-
+  height: 100vh;
   background: #f8f9fa;
 }
 </style>

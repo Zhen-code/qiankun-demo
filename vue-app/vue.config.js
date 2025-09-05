@@ -2,6 +2,7 @@ const { defineConfig } = require('@vue/cli-service')
 const { name } = require('./package');
 module.exports = defineConfig({
   transpileDependencies: true,
+  publicPath: '/child/vue-history/',
   devServer: {
     port: 8080, // 设置端口为 8080
     open: false, // 可选：自动打开浏览器
@@ -17,5 +18,14 @@ module.exports = defineConfig({
       chunkLoadingGlobal: `chunkLoadingGlobal_${name}`, 
       // jsonpFunction: `webpackJsonp_${name}`, // webpack 5 需要把 jsonpFunction 替换成 chunkLoadingGlobal
     },
+    resolveLoader: {
+    },
   },
+  // css: {
+  //   loaderOptions: {
+  //     scss: {
+  //       additionalData: `@import "~@/styles/variables.scss";` // 全局引入 SCSS 变量文件（可选）
+  //     }
+  //   }
+  // }
 })

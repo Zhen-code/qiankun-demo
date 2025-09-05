@@ -4,6 +4,7 @@ import App from './App.vue'
 import router from './router'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+// import '!!vue-style-loader!css-loader!my-style-loader!element-plus/dist/index.css'
 import { useGlobalStore } from './stores/globalStore';
 import { createPinia } from 'pinia'
 // createApp(App).use(router).mount('#app')
@@ -11,9 +12,16 @@ const pinia = createPinia()
 let instance = null;
 function render(props = {}) {
   const { container } = props;
+  
   instance = createApp(App)
+  instance.config.errorHandler = (err) => {
+    if (err.message && err.message.includes('ResizeObserver loop completed with undelivered notifications')) {
+      return; // Suppress ResizeObserver loop error
+    }
+    console.error(err);
+  };
   instance.use(router)
-  instance.use(ElementPlus)
+  instance.use(ElementPlus) //{ namespace: "ep" }
   instance.use(pinia)
   instance.mount(container ? container.querySelector('#app') : '#app');
 }
@@ -27,17 +35,20 @@ export async function bootstrap() {
   console.log('[vue] vue app bootstraped');
 }
 export async function mount(props) {
-  console.log('[vue] props from main framework', props.state);
+  console.log('[vue] props from main framework', props);
   render(props);
+  // 保存主应用的setGlobalState方法
+  window.setGlobalState = props.setGlobalState;
 
-props.onGlobalStateChange((state, prev) => {
-    // state: 变更后的状态; prev 变更前的状态
-    console.log(state, prev,'state change');
-    const store = useGlobalStore();
-    store.updateGlobalState(state);
-  });
+  // props.onGlobalStateChange((state, prev) => {
+  //   // state: 变更后的状态; prev 变更前的状态
+  //   console.log(state, prev,'state change');
+  //   // const store = useGlobalStore();
+  //   // store.updateGlobalState(state);
+  // });
 }
 export async function unmount() {
+  console.log('[vue] unmount');
 //   instance.$destroy();
 //   instance.$el.innerHTML = '';
   instance && instance.unmount();

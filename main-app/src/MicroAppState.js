@@ -1,6 +1,8 @@
 import { initGlobalState } from 'qiankun';
 export let state = {
-  userName: 'qiankun'
+  userName: 'qiankun',
+  app: null,
+  sidebarVisible: true
 }
 // 初始化 state
 const actions = initGlobalState(state);
@@ -10,5 +12,8 @@ actions.onGlobalStateChange((newVal, prev) => {
   state = newVal
   console.log(state);
 });
-export const setGlobalState = (state) => actions.setGlobalState(state)
+export const setGlobalState = (newState) => {  
+  actions.setGlobalState(newState)
+}
+export const onGlobalStateChange = (callback) => { return actions.onGlobalStateChange(callback); };
 export const offGlobalStateChange = () => actions.offGlobalStateChange();

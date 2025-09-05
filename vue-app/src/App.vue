@@ -1,8 +1,14 @@
 <template>
-  <router-view/>
+    <!-- <el-config-provider namespace="ep">
+      <router-view/>
+    </el-config-provider> -->
+    <router-view/>
 </template>
 
-<style>
+<script setup>
+import { ElConfigProvider } from 'element-plus';
+</script>
+<style lang="scss">
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
