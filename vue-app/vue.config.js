@@ -2,7 +2,7 @@ const { defineConfig } = require('@vue/cli-service')
 const { name } = require('./package');
 module.exports = defineConfig({
   transpileDependencies: true,
-  publicPath: process.env.NODE_ENV === 'development' ? '/child/vue-history/' : '/qiankun-demo/child/vue-history/',
+  publicPath: process.env.NODE_ENV === 'development' ? '/' : '/child/vue-history/',
   devServer: {
     port: 8080, // 设置端口为 8080
     open: false, // 可选：自动打开浏览器
