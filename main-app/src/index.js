@@ -13,7 +13,9 @@ addGlobalUncaughtErrorHandler((event) => console.log(event, '全局错误捕获'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Router><App /></Router>
+    <Router basename={
+      process.env.NODE_ENV === 'development' ? '/':'/qiankun-demo'
+    }><App /></Router>
   </React.StrictMode>
 );
 
