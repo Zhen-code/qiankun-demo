@@ -42,7 +42,7 @@ registerMicroApps([
   // },
   {
     name: 'app-vue',
-    entry: process.env.NODE_ENV === 'development' ? '//localhost:8080/child/vue-history' : '/qiankun-demo/child/vue-history', // 根据环境切换入口地址
+    entry: process.env.NODE_ENV === 'development' ? '//localhost:8080/child/vue-history' : '/qiankun-demo/child/vue-history/', // 根据环境切换入口地址
     container: '#container',
     activeRule: '/app-vue-history',
   },
