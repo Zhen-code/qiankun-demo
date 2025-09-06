@@ -18,7 +18,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(window.__POWERED_BY_QIANKUN__ ? '/app-vue-history/' : '/child/vue-history/'), // process.env.BASE_URL
+  history: createWebHistory(window.__POWERED_BY_QIANKUN__ ? '/app-vue-history/' : '/'), // process.env.BASE_URL
   routes
 })
 

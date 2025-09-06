@@ -41,4 +41,5 @@ yarn-error.log*
 *.tmp
 
 Snipaste_2025-08-17_19-27-09.png
-build/
+main-app/build
+main-app/docs
