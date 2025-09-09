@@ -182,10 +182,12 @@ export default {
       console.log('value:', value);
     },
     handleShowSidebar() {
-        window.setGlobalState({
+      if(window.__POWERED_BY_QIANKUN__) {
+         window.setGlobalState({
           sidebarVisible: true,
           app: 'main-app',
          });
+      }
     },
     // 提交角色表单
     submitRoleForm() {
