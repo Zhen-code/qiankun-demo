@@ -1,6 +1,6 @@
 import { Button, Form, Input, Card, Typography } from 'antd';
 import { useState } from 'react';
-import { setGlobalState } from './MicroAppState';
+import { setGlobalState, state } from './MicroAppState';
 import './Login.css';
 
 const { Title } = Typography;
@@ -13,7 +13,10 @@ const Login = ({ onLogin }) => {
     setTimeout(() => {
       const token = Math.random().toString(36).substring(2); // 随机生成 token
       localStorage.setItem('token', token); // 存储 token
-      setGlobalState('token', token);
+      setGlobalState({
+        ...state,
+        token,
+      });
       onLogin(token);
       setLoading(false);
       console.log('登录成功', token);

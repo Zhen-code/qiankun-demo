@@ -26,16 +26,19 @@ const navigate = useNavigate();
   ];
 
   useEffect(() => {
+    
     // 根据当前路由设置选中菜单项和全局状态
     const path = location.pathname.replace(/\/$/, ''); // 移除末尾斜杠
+    console.log('path', path);
+
      if (path === '/app-vue-history') {
       setSelectedKey('vue');
       setGlobalState({ ...state, app: 'vue-app', sidebarVisible: false });
       setSidebarCollapsed(true);
-    } else if (path === '/react') {
+    } else if (path.startsWith('/react')) {
       setSelectedKey('react');
       setGlobalState({ ...state, app: 'react-app', sidebarVisible: true });
-      setSidebarCollapsed(false);
+      setSidebarCollapsed(true);
     } else {
       setSelectedKey('home');
       setGlobalState({ ...state, app: 'main-app', sidebarVisible: true });
@@ -45,7 +48,8 @@ const navigate = useNavigate();
 
   // 监听全局状态变化，控制侧边栏显示
   useEffect(() => {
-    onGlobalStateChange((newState) => {      
+    onGlobalStateChange((newState) => {  
+          
       if(newState && newState.app === 'main-app') {
         // 跳转到首页
         navigate('/');
@@ -89,8 +93,6 @@ const navigate = useNavigate();
                     key: 'vue', 
                       label: 'vue应用',
                       onClick: () => {
-                        // debugger;
-                        // setGlobalState({ ...state, app: 'vue-app' });
                         navigate('/app-vue-history');
                       }
                   },
@@ -105,8 +107,13 @@ const navigate = useNavigate();
               <div style={{ padding: '0 20px', background: '#ffffff', height: '64px', display: 'flex', alignItems: 'center' }}>
                  {sidebarCollapsed && (
                    <img
-                     src={`${process.env.PUBLIC_URL}/logo192.png`}
-                     alt="Logo"
+                     src={
+                      location.pathname === '/app-vue-history/' ?
+                      'https://ts3.tc.mm.bing.net/th/id/ODF.Npfb3Lt5Kweeqbn0AaNM8Q?w=32&h=32&qlt=90&pcl=fffffa&o=6&cb=thwsc4&pid=1.2'
+                      :
+                      'https://ts3.tc.mm.bing.net/th/id/ODF.uueRzX_Uadnf-upJFewZbQ?w=32&h=32&qlt=90&pcl=fffffa&o=6&cb=thwsc4&pid=1.2'
+                      }
+                     alt={location.pathname}
                      style={{ height: '40px', marginRight: '20px', cursor: 'pointer' }}
                    />
                  )}

@@ -26,13 +26,6 @@ reportWebVitals();
 // debugger;
 registerMicroApps([
   // {
-  //   name: 'reactApp',
-  //   entry: process.env.NODE_ENV === 'development' ?'//localhost:3001':'/react/',
-  //   container: '#container',
-  //   activeRule: '/react',
-  //   props: state
-  // },
-  // {
   //   name: 'vueApp',
   //   entry: process.env.NODE_ENV === 'development' ?'//localhost:8080':'/vue1/',
   //   container: '#container',
@@ -44,6 +37,13 @@ registerMicroApps([
     entry: process.env.NODE_ENV === 'development' ? '//localhost:8080/' : '/child/vue-history/', // 根据环境切换入口地址
     container: '#container',
     activeRule: '/app-vue-history'
+  },
+  {
+    name: 'react-app',
+    entry: process.env.NODE_ENV === 'development' ?'//localhost:3002':'/child/react-history/',
+    container: '#container',
+    activeRule: '/react',
+    props: state
   },
 ], {
   afterMount: (app) => {
