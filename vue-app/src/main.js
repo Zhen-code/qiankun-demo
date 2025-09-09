@@ -1,25 +1,19 @@
 import './public-path';
 import { createApp } from 'vue'
 import App from './App.vue'
-import { routes } from './router' // router
+import router from './router' // 
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-import { createRouter, createWebHashHistory }from 'vue-router'
 // import '!!vue-style-loader!css-loader!my-style-loader!element-plus/dist/index.css'
 import { useGlobalStore } from './stores/globalStore';
 import { createPinia } from 'pinia'
 // createApp(App).use(router).mount('#app')
 const pinia = createPinia()
 let instance = null;
-let router = null;
 function render(props = {}) {
   const { container } = props;
    
   instance = createApp(App)
-  router = new createRouter({
-    history: createWebHashHistory(window.__POWERED_BY_QIANKUN__ ? props.routerBase : '/'),
-    routes
-  })
   instance.use(router)
   instance.use(ElementPlus) //{ namespace: "ep" }
   instance.use(pinia)

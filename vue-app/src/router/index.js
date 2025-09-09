@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 export const routes = [
@@ -18,8 +18,7 @@ export const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHashHistory('#/app-vue-history'),//window.__POWERED_BY_QIANKUN__ ? '/app-vue-history/' : '/',
+  history: createWebHistory(window.__POWERED_BY_QIANKUN__ ? '/app-vue-history/' : '/'),//,
   routes
 })
-
-// export default router
+export default router

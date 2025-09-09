@@ -1,2 +1,0 @@
-"use strict";(self["chunkLoadingGlobal_vue-app"]=self["chunkLoadingGlobal_vue-app"]||[]).push([[594],{603:function(n,u,a){a.r(u),a.d(u,{default:function(){return c}});var t=a(6768);const e={class:"about"};function o(n,u){return(0,t.uX)(),(0,t.CE)("div",e,u[0]||(u[0]=[(0,t.Lk)("h1",null,"This is an about page",-1)]))}var r=a(1241);const s={},l=(0,r.A)(s,[["render",o]]);var c=l}}]);
-//# sourceMappingURL=about.ce85bcab.js.map

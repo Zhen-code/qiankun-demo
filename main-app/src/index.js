@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { HashRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import { registerMicroApps, start, addGlobalUncaughtErrorHandler } from 'qiankun';
 import './MicroAppState'
@@ -41,12 +41,9 @@ registerMicroApps([
   // },
   {
     name: 'app-vue',
-    entry: process.env.NODE_ENV === 'development' ? '//localhost:8080/' : '/qiankun-demo/child/vue-history/', // 根据环境切换入口地址
+    entry: process.env.NODE_ENV === 'development' ? '//localhost:8080/' : '/child/vue-history/', // 根据环境切换入口地址
     container: '#container',
-    activeRule: getActiveRule('#/app-vue-history'),
-    props: {
-      routerBase: '#/app-vue-history' // 设置子应用的 base 路径
-    }
+    activeRule: '/app-vue-history'
   },
 ], {
   afterMount: (app) => {
