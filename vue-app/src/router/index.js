@@ -1,9 +1,9 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
-const routes = [
+export const routes = [
   {
-    path: '/',
+    path: '/app-vue-history',
     name: 'home',
     component: HomeView
   },
@@ -18,8 +18,8 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(process.env.NODE_ENV === 'development' ? '/' : '/qiankun-demo/'),
+  history: createWebHashHistory('#/app-vue-history'),//window.__POWERED_BY_QIANKUN__ ? '/app-vue-history/' : '/',
   routes
 })
 
-export default router
+// export default router

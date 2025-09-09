@@ -10,6 +10,7 @@ import './MicroAppState'
 import { state, setGlobalState } from './MicroAppState'
 import { process } from 'qiankun/es/sandbox/patchers/css';
 addGlobalUncaughtErrorHandler((event) => console.log(event, '全局错误捕获'));
+const getActiveRule = (hash) => (location) => location.hash.startsWith(hash)
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -40,9 +41,12 @@ registerMicroApps([
   // },
   {
     name: 'app-vue',
-    entry: process.env.NODE_ENV === 'development' ? '//localhost:8080' : '/qiankun-demo/child/vue-history/', // 根据环境切换入口地址
+    entry: process.env.NODE_ENV === 'development' ? '//localhost:8080/' : '/qiankun-demo/child/vue-history/', // 根据环境切换入口地址
     container: '#container',
-    activeRule: (location) => location.hash.startsWith('#/app-vue-history'),
+    activeRule: getActiveRule('#/app-vue-history'),
+    props: {
+      routerBase: '#/app-vue-history' // 设置子应用的 base 路径
+    }
   },
 ], {
   afterMount: (app) => {
@@ -54,12 +58,12 @@ registerMicroApps([
 });
 // // 启动 qiankun
 start({
-  prefetch: true,
+  // prefetch: true,
   // sandbox: {
   //   // strictStyleIsolation: true,
   //   // experimentalStyleIsolation: true,
   // }
   // strictStyleIsolation: true,
   // experimentalStyleIsolation: true
-  // sandbox: true
+  sandbox: false
 });
