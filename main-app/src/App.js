@@ -36,7 +36,7 @@ const navigate = useNavigate();
       setSelectedKey('vue');
       setGlobalState({ ...state, app: 'vue-app', sidebarVisible: false });
       setSidebarCollapsed(true);
-    } else if (path.startsWith('/react')) {
+    } else if (path.startsWith('/app-react-history')) {
       setSelectedKey('react');
       setGlobalState({ ...state, app: 'react-app', sidebarVisible: true });
       setSidebarCollapsed(true);
