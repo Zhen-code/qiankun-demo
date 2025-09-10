@@ -62,7 +62,7 @@ function App() {
   ];
 
   return (
-    <Router basename={window.__POWERED_BY_QIANKUN__ ? '/react' : '/'}>
+    <Router basename={window.__POWERED_BY_QIANKUN__ ? '/app-react-history' : '/'}>
       <Layout style={{ minHeight: '100vh' }}>
         <Sider
           collapsible

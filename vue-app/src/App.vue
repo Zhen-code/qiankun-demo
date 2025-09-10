@@ -1,12 +1,10 @@
 <template>
-    <!-- <el-config-provider namespace="ep">
-      <router-view/>
-    </el-config-provider> -->
     <router-view/>
 </template>
 
 <script setup>
-import { ElConfigProvider } from 'element-plus';
+// Element global config
+// import { ElConfigProvider } from 'element-plus';
 </script>
 <style lang="scss">
 

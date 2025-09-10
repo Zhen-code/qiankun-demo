@@ -1,11 +1,12 @@
 /* eslint-disable */
 import { Layout, Menu, Dropdown, Space, Card, Typography, Statistic, Divider, Avatar } from 'antd';
 const { Sider, Content } = Layout;
-import { Routes, Route, Navigate, Link, useLocation, useNavigate } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { UserOutlined, DashboardOutlined } from '@ant-design/icons';
 import { Fragment, useState, useEffect, useRef} from 'react';
 import Login from './Login';
 import './App.css';
+// import microapp state 
 import { state, setGlobalState, onGlobalStateChange, offGlobalStateChange } from './MicroAppState';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
@@ -29,7 +30,7 @@ const navigate = useNavigate();
     
     // 根据当前路由设置选中菜单项和全局状态
     const path = location.pathname.replace(/\/$/, ''); // 移除末尾斜杠
-    console.log('path', path);
+    // console.log('path', path);
 
      if (path === '/app-vue-history') {
       setSelectedKey('vue');
@@ -49,7 +50,7 @@ const navigate = useNavigate();
   // 监听全局状态变化，控制侧边栏显示
   useEffect(() => {
     onGlobalStateChange((newState) => {  
-          
+          // 子应用中点击访问主页回主应用
       if(newState && newState.app === 'main-app') {
         // 跳转到首页
         navigate('/');
@@ -64,7 +65,7 @@ const navigate = useNavigate();
 
   return (
     <div className="App">
-      
+        {/* 是否登录 */}
         {isLoggedIn ? (
           <Layout style={{ minHeight: '100vh' }}>
             <Sider 
@@ -98,7 +99,10 @@ const navigate = useNavigate();
                   },
                   { 
                     key: 'react', 
-                    label: <a href="/react">react应用</a>
+                    label: 'react应用',
+                    onClick: () => {
+                        navigate('/app-react-history');
+                    }
                   }
                 ]}
               />

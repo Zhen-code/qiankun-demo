@@ -4,7 +4,7 @@ import App from './App.vue'
 import router from './router' // 
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-// import '!!vue-style-loader!css-loader!my-style-loader!element-plus/dist/index.css'
+// import '!!vue-style-loader!css-loader!my-style-loader!element-plus/dist/index.css' 可单独处理element-plus样式，无需在vue.config.js中配置
 import { useGlobalStore } from './stores/globalStore';
 import { createPinia } from 'pinia'
 // createApp(App).use(router).mount('#app')
@@ -15,7 +15,7 @@ function render(props = {}) {
    
   instance = createApp(App)
   instance.use(router)
-  instance.use(ElementPlus) //{ namespace: "ep" }
+  instance.use(ElementPlus) 
   instance.use(pinia)
   instance.mount(container ? container.querySelector('#app') : '#app');
 }
@@ -43,7 +43,5 @@ export async function mount(props) {
 }
 export async function unmount() {
   console.log('[vue] unmount');
-//   instance.$destroy();
-//   instance.$el.innerHTML = '';
   instance && instance.unmount();
 }
